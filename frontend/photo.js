@@ -10,16 +10,20 @@ class Photo {
         photoList.innerHTML = ''
     }
     displayPhoto() {
-        const photoList = document.querySelector('ul.photos')
-        const photo = document.createElement('li')
-        photo.id = `photo${this.id}`
+        // const photoList = document.querySelector('ul.photos')
+        const photoContainer = document.querySelector('#photoContainer')
+        const photoRow = document.createElement('div');
+        photoRow.classList.add('row')
+        // const photo = document.createElement('li')
+        // photo.id = `photo${this.id}`
         const photoImage = document.createElement('img')
         photoImage.src = this.url;
         const caption = document.createElement('h3')
         caption.innerText = this.caption
-        photo.appendChild(photoImage)
-        photo.appendChild(caption)
-        photoList.appendChild(photo)
+        photoRow.appendChild(photoImage)
+        // photo.appendChild(caption)
+        // photoRow.appendChild(photo)
+        photoContainer.appendChild(photoRow)
         
     }
     

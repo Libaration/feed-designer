@@ -1,0 +1,40 @@
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #262626;
+  padding-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header header header header header"
+    ". photoContainer photoContainer photoContainer ."
+    ". photoContainer photoContainer photoContainer ."
+    ". photoContainer photoContainer photoContainer .";
+}
+#photoContainer img {
+  display: block;
+  height: 200px;
+  width: auto;
+}
+
+#photoContainer {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+}
+
+#photoContainer {
+  grid-area: photoContainer;
+}
+.header {
+  grid-area: header;
+}
