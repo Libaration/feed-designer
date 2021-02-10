@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
+    def index
+        users = User.all
+        render json: users
+    end
     def create
-      @user = User.new(userparams)
-      @user.save
+      user = User.find_or_initialize_by(userparams)
+      if user.save
+        render json: user
+        else
+        render json: "{status: incomplete}"
+      end
     end
 
     def userparams

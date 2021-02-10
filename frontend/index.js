@@ -1,22 +1,42 @@
-const grabFeed = async (handle) => {
-    const response = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify ({
-            username: handle
+class User {
+    constructor(id,username,image,name){
+        this.id = id;
+        this.username = username;
+        this.image = image;
+        this.name = name;
+    }
+    static async createOrFindUser(handle) {
+        const response = await fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify ({
+                username: handle
+            })
         })
-        
-    })
-    console.log(response)
+        const object = await response.json()
+        const {id,username,image,name} = object;
+        return new User(id,username,image,name)
+    }
+    displayUserInfo() {
+        const avatar = document.createElement('img')
+        avatar.src = this.image;
+        const bioContainer = document.createElement('div')
+        bioContainer.appendChild(avatar)
+        const name = document.createElement('h1')
+        name.innerText = this.name
+        document.querySelector('body').appendChild(bioContainer)
+        document.querySelector('body').appendChild(name)
+    }
 }
-document.addEventListener('DOMContentLoaded', (e) =>{
-    const submitUserBtn = document.getElementById('submit-user-btn')
+
+document.addEventListener("DOMContentLoaded", () => {
     const igHandle = document.getElementById('ig-handle')
-    submitUserBtn.addEventListener('click', (e) =>{
-        grabFeed(igHandle.value);
-        e.preventDefault();
+    const userForm = document.querySelector('form.submit-user-form')
+    userForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        User.createOrFindUser(igHandle).then(userObject => userObject.displayUserInfo())  
     })
 })
