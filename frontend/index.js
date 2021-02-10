@@ -15,17 +15,24 @@ const devTest = async () => {
     return photos;
 }
 
+const devStuff = () => {
+
+    User.createOrFindUser('hatecristian').then(userObject => {
+        userObject.displayUserInfo()
+    })
+    devTest().then(devPhotos=>{
+        for(devPhoto of devPhotos){
+            devPhoto.displayPhoto()
+        }
+    })
+}
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    //dev function
-        devTest().then(devPhotos=>{
-            for(devPhoto of devPhotos){
-                devPhoto.displayPhoto()
-            }
-        })
-        
-    //for styling
+    // //dev function
+        devStuff()
+    // //for styling
 
     const igHandle = document.getElementById('ig-handle')
     const userForm = document.querySelector('form.submit-user-form')

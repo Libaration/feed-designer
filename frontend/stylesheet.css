@@ -6,18 +6,21 @@ body {
   padding-bottom: 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 300px 300px 300px 300px;
   gap: 0px 0px;
   grid-template-areas:
     "header header header header header"
-    ". photoContainer photoContainer photoContainer ."
-    ". photoContainer photoContainer photoContainer ."
-    ". photoContainer photoContainer photoContainer .";
+    ". photoGrid photoGrid photoGrid ."
+    ". photoGrid photoGrid photoGrid ."
+    ". photoGrid photoGrid photoGrid .";
 }
 #photoContainer img {
   display: block;
-  height: 200px;
+  height: 255px;
   width: auto;
+}
+#bioContainer img {
+  border-radius: 50%;
 }
 
 #photoContainer {
@@ -32,8 +35,8 @@ body {
     ". . .";
 }
 
-#photoContainer {
-  grid-area: photoContainer;
+.photoGrid {
+  grid-area: photoGrid;
 }
 .header {
   grid-area: header;

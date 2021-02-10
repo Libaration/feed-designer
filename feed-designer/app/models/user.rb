@@ -14,6 +14,10 @@ class User < ApplicationRecord
         if !self.photos.empty?
             self.photos.destroy_all
             self.scrape_photos
+            # image1 = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")[1]
+            #     url = image1.attr('src')
+            #     caption = image1.attr('alt')
+            #     self.photos.create(caption: caption, url: url)
         else
             images = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")
             images.each do |img|

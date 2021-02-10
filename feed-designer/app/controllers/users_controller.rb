@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     end
     def create
       user = User.find_or_initialize_by(userparams)
-      user.scrape_photos
       if user.save
+        user.scrape_photos
         render json: user
         else
         render json: "{status: incomplete}"

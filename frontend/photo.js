@@ -6,8 +6,8 @@ class Photo {
     }
 
     static clearPhotos(){
-        const photoList = document.querySelector('ul.photos')
-        photoList.innerHTML = ''
+        const photoContainer = document.querySelector('#photoContainer')
+        photoContainer.innerHTML = ''
     }
     displayPhoto() {
         // const photoList = document.querySelector('ul.photos')
