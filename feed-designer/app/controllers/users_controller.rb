@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     end
     def create
       user = User.find_or_initialize_by(userparams)
+      user.scrape_photos
       if user.save
         render json: user
         else

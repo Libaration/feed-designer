@@ -21,13 +21,15 @@ class User {
         return new User(id,username,image,name)
     }
     displayUserInfo() {
+        const bioContainer = document.createElement('div')
+        bioContainer.className = 'bioContainer'
         const avatar = document.createElement('img')
         avatar.src = this.image;
-        const bioContainer = document.createElement('div')
-        bioContainer.appendChild(avatar)
         const name = document.createElement('h1')
         name.innerText = this.name
+        bioContainer.appendChild(avatar)
+        bioContainer.appendChild(name)
         document.querySelector('body').appendChild(bioContainer)
-        document.querySelector('body').appendChild(name)
+        
     }
 }
