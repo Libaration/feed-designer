@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         User.createOrFindUser(igHandle.value).then(userObject => {
             userObject.displayUserInfo()
             userObject.grabPhotos().then(photos => {
+                Photo.clearPhotos()
                 for(photo of photos){
                     photo.displayPhoto()
                 }

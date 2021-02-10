@@ -22,11 +22,15 @@ class User {
     }
     displayUserInfo() {
         const bioContainer = document.getElementById('bioContainer')
+        bioContainer.innerHTML = ''
         const avatar = document.createElement('img')
         avatar.src = this.image;
-        const name = document.createElement('h1')
+        const name = document.createElement('h2')
+        const handle = document.createElement('h1')
+        handle.innerText = `@${this.username}`;
         name.innerText = this.name
         bioContainer.appendChild(avatar)
+        bioContainer.appendChild(handle)
         bioContainer.appendChild(name)
     }
     async grabPhotos() {

@@ -5,6 +5,10 @@ class Photo {
         this.url = url;
     }
 
+    static clearPhotos(){
+        const photoList = document.querySelector('ul.photos')
+        photoList.innerHTML = ''
+    }
     displayPhoto() {
         const photoList = document.querySelector('ul.photos')
         const photo = document.createElement('li')
@@ -18,4 +22,5 @@ class Photo {
         photoList.appendChild(photo)
         
     }
+    
 }
