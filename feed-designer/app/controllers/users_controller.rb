@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def create
       @user = User.new(userparams)
-      binding.pry
+      @user.save
     end
 
     def userparams
