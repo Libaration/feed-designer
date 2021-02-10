@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const userForm = document.querySelector('form.submit-user-form')
     userForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        User.createOrFindUser(igHandle.value).then(userObject => userObject.displayUserInfo())  
+        User.createOrFindUser(igHandle.value).then(userObject => {
+            userObject.displayUserInfo()
+            userObject.grabPhotos()
+        })  
     })
 })

@@ -30,6 +30,16 @@ class User {
         bioContainer.appendChild(avatar)
         bioContainer.appendChild(name)
         document.querySelector('body').appendChild(bioContainer)
-        
+    }
+    async grabPhotos() {
+        const response = await fetch(`http://localhost:3000/users/${this.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        })
+        const object = await response.json()
+        console.log(object)
     }
 }
