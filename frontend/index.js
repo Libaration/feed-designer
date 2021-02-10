@@ -5,7 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault()
         User.createOrFindUser(igHandle.value).then(userObject => {
             userObject.displayUserInfo()
-            userObject.grabPhotos()
+            userObject.grabPhotos().then(photos => {
+                for(photo of photos){
+                    photo.displayPhoto()
+                }
+            })
         })  
     })
 })

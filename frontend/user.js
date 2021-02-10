@@ -21,15 +21,13 @@ class User {
         return new User(id,username,image,name)
     }
     displayUserInfo() {
-        const bioContainer = document.createElement('div')
-        bioContainer.className = 'bioContainer'
+        const bioContainer = document.getElementById('bioContainer')
         const avatar = document.createElement('img')
         avatar.src = this.image;
         const name = document.createElement('h1')
         name.innerText = this.name
         bioContainer.appendChild(avatar)
         bioContainer.appendChild(name)
-        document.querySelector('body').appendChild(bioContainer)
     }
     async grabPhotos() {
         const response = await fetch(`http://localhost:3000/users/${this.id}`, {
@@ -40,6 +38,11 @@ class User {
             }
         })
         const object = await response.json()
-        console.log(object)
+        const photos = object.photos.map(photo => {
+            const {id, caption, url} = photo
+            return new Photo(id, caption, url)
+        })
+
+        return photos;
     }
 }
