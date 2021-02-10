@@ -13,9 +13,12 @@ class User {
                 "Accept": "application/json"
             },
             body: JSON.stringify ({
-                username: handle
+                user: {username: handle}
             })
         })
+        console.log(JSON.stringify ({
+            user: {username: handle}
+        }))
         const object = await response.json()
         const {id,username,image,name} = object;
         return new User(id,username,image,name)
@@ -37,6 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const userForm = document.querySelector('form.submit-user-form')
     userForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        User.createOrFindUser(igHandle).then(userObject => userObject.displayUserInfo())  
+        User.createOrFindUser(igHandle.value).then(userObject => userObject.displayUserInfo())  
     })
 })
