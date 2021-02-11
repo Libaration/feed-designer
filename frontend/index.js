@@ -38,17 +38,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // //dev function
         // devStuff()
     // //for styling
-
+  
     const igHandle = document.getElementById('ig-handle')
     const userForm = document.querySelector('form.submit-user-form')
     const addPhotoButton = document.querySelector('.add-button')
     const addPhotoForm = document.querySelector('form.addpopupform')
     userForm.addEventListener("submit", (e) => {
-        const searchBar = document.querySelector("div.searchcenter")
-        if(searchBar){
-            searchBar.classList.remove('searchcenter')
-            searchBar.classList.add('search')
-        }
+        anime({
+            targets: '.add-button',
+            translateX: 300,
+            duration: 1000,
+            easing: 'easeOutBack',
+          });   
+        // const searchBar = document.querySelector("div.searchcenter")
+        // if(searchBar){
+        //     searchBar.classList.remove('searchcenter')
+        //     searchBar.classList.add('search')
+        // }
+        // anime({
+        //     targets: '.submit-button',
+        //     translateX: 340,
+        //     duration: 1000,
+        //     easing: 'easeOutBack',
+        //   });  
+          anime({
+            targets: '.searchcenter',
+            translateX: -650,
+            duration: 1000,
+            easing: 'easeOutBack',
+          }); 
+
         e.preventDefault()
         User.createOrFindUser(igHandle.value.replace('@',"")).then(userObject => {
             userObject.displayUserInfo()
@@ -86,5 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
             userObject.addPhoto(imgUrl)
         })
     })
-    
+    const textInput = document.getElementById('ig-handle')
+    textInput.addEventListener('click',e=>{
+        anime({
+            targets: '.submit-button',
+            translateX: 1000,
+            duration: 1000,
+            easing: 'easeInOutElastic',
+        })
+    })
 })
