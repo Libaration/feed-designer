@@ -22,10 +22,11 @@ body {
   display: block;
   height: 255px;
   width: auto;
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 10px 10px 5px black;
 }
 #bioContainer img {
   border-radius: 50%;
+  box-shadow: 5px 5px 5px black;
 }
 #bioContainer {
   padding: 20px;

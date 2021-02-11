@@ -38,7 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // //dev function
         // devStuff()
     // //for styling
-  
+    const sortable = new Draggable.Sortable(document.querySelectorAll('#photoContainer'), {
+        draggable: '.container'
+      });
     const igHandle = document.getElementById('ig-handle')
     const userForm = document.querySelector('form.submit-user-form')
     const addPhotoButton = document.querySelector('.add-button')
