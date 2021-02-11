@@ -11,21 +11,24 @@ class User < ApplicationRecord
         self.name = load_site.css("h2").text
     end
     def scrape_photos
-        if !self.photos.empty?
-            self.photos.destroy_all
-            self.scrape_photos
+        # if !self.photos.empty?
+        #     self.photos.destroy_all
+        #     self.scrape_photos
             # image1 = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")[1]
             #     url = image1.attr('src')
             #     caption = image1.attr('alt')
             #     self.photos.create(caption: caption, url: url)
-        else
+        # else
             images = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")
             images.each do |img|
-                url = img.attr('src')
-                caption = img.attr('alt')
-                self.photos.create(caption: caption, url: url)
-            end
-        end
+                if Photo.exists?(['url LIKE ?', "#{img.attr('src')}"])
+                    next
+                end
+                    url = img.attr('src')
+                    caption = img.attr('alt')
+                    self.photos.create(caption: caption, url: url)
+                end
+        # end
     end
 
     private
