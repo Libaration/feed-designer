@@ -30,7 +30,8 @@ class Photo {
         caption.innerText = this.caption
         photoRow.appendChild(photoImage)
         overlayContainer.appendChild(photoRow)
-        photoContainer.appendChild(overlayContainer)
+        // photoContainer.appendChild(overlayContainer)
+        photoContainer.insertBefore(overlayContainer, photoContainer.firstChild);
         photoRow.addEventListener('mouseover', e =>{
             console.log(this.caption)
         })

@@ -36,7 +36,7 @@ const devStuff = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     // //dev function
-        devStuff()
+        // devStuff()
     // //for styling
 
     const igHandle = document.getElementById('ig-handle')

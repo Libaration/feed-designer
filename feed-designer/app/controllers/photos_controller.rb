@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
     def create
-      @photo = Photo.new(post_params)
+      @photo = Photo.find_or_initialize_by(post_params)
       if @photo.save
         render json: @photo
       else

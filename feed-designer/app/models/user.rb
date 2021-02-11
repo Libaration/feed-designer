@@ -12,7 +12,7 @@ class User < ApplicationRecord
     end
     def scrape_photos
             images = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")
-            images.each do |img|
+            images.reverse.each do |img|
                 if Photo.exists?(['url LIKE ?', "#{img.attr('src')}"])
                     next
                 end

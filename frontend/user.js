@@ -60,7 +60,11 @@ class User {
                 photo: {url: url, user_id: this.id}
             })
         })
-        const object = await response.json()
-        console.log(object)
+            await response.json().then(photo =>{
+            const {id, caption, url} = photo
+            const photoObject = new Photo(id,null,url)
+            photoObject.displayPhoto()
+        })
+        
     }
 }
