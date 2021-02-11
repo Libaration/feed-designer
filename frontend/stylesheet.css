@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Cormorant Garamond", sans-serif;
   height: 100vh;
   min-height: 100vh;
@@ -18,14 +20,16 @@ body {
 }
 #photoContainer img {
   display: block;
-  height: 250px;
+  height: 255px;
   width: auto;
+  box-shadow: 10px 10px 5px grey;
 }
 #bioContainer img {
   border-radius: 50%;
 }
 #bioContainer {
   padding: 20px;
+  color: white;
 }
 div.search {
   grid-row: 2;
@@ -56,14 +60,21 @@ div.search input[type="text"]:hover {
 div.searchcenter {
   grid-row: 2;
   grid-column: 3;
+  z-index: 1;
 }
 div.searchcenter input[type="text"] {
   border: none;
-  background-color: #fafafa;
-  border-bottom: 2px solid #659dbd;
+  background-color: #153243;
+  border-bottom: 2px solid white;
   user-select: none;
   font-size: 30px;
   width: 100%;
+  color: #284b63;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
 }
 .submit-button {
   height: 270px;
@@ -72,6 +83,7 @@ div.searchcenter input[type="text"] {
   transition: opacity 0.7s ease-in-out;
   position: relative;
   left: -1000px;
+  z-index: 1;
 }
 
 .add-button {
@@ -104,6 +116,7 @@ button:focus {
     ". . .";
   padding-bottom: 30px;
   margin-left: 248px;
+  padding-top: 5px;
 }
 
 .photoGrid {
@@ -163,4 +176,14 @@ button:focus {
   opacity: 1;
   position: absolute;
   left: -300px;
+  z-index: 1;
+}
+.svg {
+  position: absolute;
+  z-index: -2;
+  margin: 0;
+  padding: 0;
+  height: 125%;
+  width: 100vw;
+  opacity: 1;
 }

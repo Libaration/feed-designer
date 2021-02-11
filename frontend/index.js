@@ -50,17 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
             duration: 1000,
             easing: 'easeOutBack',
           });   
-        // const searchBar = document.querySelector("div.searchcenter")
-        // if(searchBar){
-        //     searchBar.classList.remove('searchcenter')
-        //     searchBar.classList.add('search')
-        // }
-        // anime({
-        //     targets: '.submit-button',
-        //     translateX: 340,
-        //     duration: 1000,
-        //     easing: 'easeOutBack',
-        //   });  
+          anime({
+            targets: '.svg',
+            opacity: 1,
+            translateX: -1200,
+            duration: 900,
+            easing: 'easeOutBack',
+          });    
           anime({
             targets: '.searchcenter',
             translateX: -650,
@@ -110,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         anime({
             targets: '.submit-button',
             translateX: 1000,
-            duration: 1000,
+            duration: 500,
             easing: 'easeInOutElastic',
         })
     })
