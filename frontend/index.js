@@ -31,14 +31,19 @@ const devStuff = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     // //dev function
-        devStuff()
+        // devStuff()
     // //for styling
 
     const igHandle = document.getElementById('ig-handle')
     const userForm = document.querySelector('form.submit-user-form')
     userForm.addEventListener("submit", (e) => {
+        const searchBar = document.querySelector("div.searchcenter")
+        if(searchBar){
+            searchBar.classList.remove('searchcenter')
+            searchBar.classList.add('search')
+        }
         e.preventDefault()
-        User.createOrFindUser(igHandle.value).then(userObject => {
+        User.createOrFindUser(igHandle.value.replace('@',"")).then(userObject => {
             userObject.displayUserInfo()
             userObject.grabPhotos().then(photos => {
                 Photo.clearPhotos()
