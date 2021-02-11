@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userForm.addEventListener("submit", (e) => {
         anime({
             targets: '.add-button',
-            translateX: 300,
+            translateX: 340,
             duration: 1000,
             easing: 'easeOutBack',
           });   
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             opacity: 0.8,
             translateY: -255,
             height: 230,
-            duration: 200,
+            duration: 500,
             easing: 'easeInQuad',
           });    
     })
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             opacity: 0.0,
             translateY: -100,
             height: 0,
-            duration: 200,
+            duration: 500,
             easing: 'easeInQuad',
         })
         User.createOrFindUser(igHandle.value.replace('@',"")).then(userObject => {
@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
     textInput.addEventListener('click',e=>{
         anime({
             targets: '.submit-button',
-            translateX: 1000,
-            duration: 500,
+            translateX: 1040,
+            duration: 1000,
             easing: 'easeInOutElastic',
         })
     })

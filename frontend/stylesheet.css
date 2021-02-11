@@ -21,8 +21,9 @@ body {
 #photoContainer img {
   display: block;
   height: 255px;
+  max-width: 255px;
   width: auto;
-  box-shadow: 10px 10px 5px black;
+  box-shadow: 10px 10px 5px grey;
 }
 #bioContainer img {
   border-radius: 50%;
@@ -30,7 +31,7 @@ body {
 }
 #bioContainer {
   padding: 20px;
-  color: white;
+  color: #153243;
 }
 div.search {
   grid-row: 2;
@@ -66,11 +67,14 @@ div.searchcenter {
 div.searchcenter input[type="text"] {
   border: none;
   background-color: #153243;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #153243;
   user-select: none;
-  font-size: 30px;
+  font-size: 28px;
   width: 100%;
-  color: #284b63;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
 }
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
