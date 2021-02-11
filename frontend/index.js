@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const igHandle = document.getElementById('ig-handle')
     const userForm = document.querySelector('form.submit-user-form')
-    const photoForm = document.getElementById('submit-pic')
+    const addPhotoButton = document.querySelector('.add-button')
+    const addPhotoForm = document.querySelector('form.addpopupform')
     userForm.addEventListener("submit", (e) => {
         const searchBar = document.querySelector("div.searchcenter")
         if(searchBar){
@@ -59,11 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })  
     })
- 
-    photoForm.onchange = function(e) {
-        console.log(e.target.value)
-        console.log(photoForm.files[0])
-        document.getElementById("add-photo-form").submit();
-    };
+    addPhotoButton.addEventListener("click", e => {
+        e.preventDefault()
+        anime({
+            targets: '.addpopup',
+            opacity: 0.8,
+            translateY: -255,
+            height: 230,
+            duration: 200,
+            easing: 'easeInQuad',
+          });    
+    })
+    addPhotoForm.addEventListener('submit', e=> {
+        const imgUrl = document.getElementById('addpopuptext').value
+        e.preventDefault()
+        anime({
+            targets: '.addpopup',
+            opacity: 0.0,
+            translateY: -100,
+            height: 0,
+            duration: 200,
+            easing: 'easeInQuad',
+        })
+        User.createOrFindUser(igHandle.value.replace('@',"")).then(userObject => {
+            userObject.addPhoto(imgUrl)
+        })
+    })
     
 })

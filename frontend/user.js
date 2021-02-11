@@ -49,4 +49,18 @@ class User {
 
         return photos;
     }
+    async addPhoto(url){
+        const response = await fetch('http://localhost:3000/photos', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept":"application/json"
+            },
+            body: JSON.stringify({
+                photo: {url: url, user_id: this.id}
+            })
+        })
+        const object = await response.json()
+        console.log(object)
+    }
 }
