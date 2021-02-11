@@ -10,20 +10,30 @@ class Photo {
         photoContainer.innerHTML = ''
     }
     displayPhoto() {
-        // const photoList = document.querySelector('ul.photos')
+        const overlayContainer = document.createElement('div')
+        overlayContainer.classList.add('container')
+
+        
+        if(this.caption){
+            const overlay = document.createElement('div')
+            overlay.classList.add('overlay')
+            overlay.innerHTML = `${this.caption}`
+            overlayContainer.appendChild(overlay)
+        }
+
         const photoContainer = document.querySelector('#photoContainer')
         const photoRow = document.createElement('div');
         photoRow.classList.add('row')
-        // const photo = document.createElement('li')
-        // photo.id = `photo${this.id}`
         const photoImage = document.createElement('img')
         photoImage.src = this.url;
         const caption = document.createElement('h3')
         caption.innerText = this.caption
         photoRow.appendChild(photoImage)
-        // photo.appendChild(caption)
-        // photoRow.appendChild(photo)
-        photoContainer.appendChild(photoRow)
+        overlayContainer.appendChild(photoRow)
+        photoContainer.appendChild(overlayContainer)
+        photoRow.addEventListener('mouseover', e =>{
+            console.log(this.caption)
+        })
         
     }
     
