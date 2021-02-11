@@ -25,6 +25,11 @@ const devStuff = () => {
             devPhoto.displayPhoto()
         }
     })
+    const searchBar = document.querySelector("div.searchcenter")
+        if(searchBar){
+            searchBar.classList.remove('searchcenter')
+            searchBar.classList.add('search')
+        }
 }
 
 

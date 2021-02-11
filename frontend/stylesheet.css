@@ -37,6 +37,12 @@ div.search input[type="text"] {
   border-bottom: 2px solid #659dbd;
   user-select: none;
   font-size: 30px;
+  transition: opacity 0.7s ease-in-out;
+  opacity: 0.5;
+  width: 100%;
+}
+div.search input[type="text"]:hover {
+  opacity: 1;
 }
 div.searchcenter {
   grid-row: 2;
@@ -48,8 +54,16 @@ div.searchcenter input[type="text"] {
   border-bottom: 2px solid #659dbd;
   user-select: none;
   font-size: 30px;
+  width: 100%;
 }
-
+.submit-button {
+  opacity: 0.8;
+  padding-top: 20px;
+  transition: opacity 0.7s ease-in-out;
+}
+.submit-button:hover {
+  opacity: 1;
+}
 input:focus,
 select:focus,
 textarea:focus,
