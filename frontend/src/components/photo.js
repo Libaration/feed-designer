@@ -12,15 +12,12 @@ class Photo {
     displayPhoto() {
         const overlayContainer = document.createElement('div')
         overlayContainer.classList.add('container')
-
-        
         if(this.caption){
             const overlay = document.createElement('div')
             overlay.classList.add('overlay')
             overlay.innerHTML = `${this.caption}`
             overlayContainer.appendChild(overlay)
         }
-
         const photoContainer = document.querySelector('#photoContainer')
         const photoRow = document.createElement('div');
         photoRow.classList.add('row')
@@ -30,12 +27,7 @@ class Photo {
         caption.innerText = this.caption
         photoRow.appendChild(photoImage)
         overlayContainer.appendChild(photoRow)
-        // photoContainer.appendChild(overlayContainer)
         photoContainer.insertBefore(overlayContainer, photoContainer.firstChild);
-        photoRow.addEventListener('mouseover', e =>{
-            console.log(this.caption)
-        })
-        
     }
     
 }
