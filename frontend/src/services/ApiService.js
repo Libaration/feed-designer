@@ -40,5 +40,16 @@ class ApiService {
         })
         return response.json()
     }
+
+    async destroyPhoto(id) {
+        const response = await fetch(`${this.baseURL}/photos/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            },
+        })
+        return response.json()
+    }
     
 }

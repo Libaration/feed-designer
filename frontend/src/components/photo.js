@@ -15,16 +15,16 @@ class Photo {
         const destroyBtnImg = document.createElement('input');
         const overlayContainer = document.createElement('div')
         destroyBtnDiv.classList.add('destroyBtn')
+        destroyBtnImg.id = `destroy#${this.id}`
         destroyBtnImg.setAttribute('type', 'image')
         destroyBtnImg.setAttribute('src', 'images/close.png');
         destroyBtnDiv.appendChild(destroyBtnImg)
+        destroyBtnImg.addEventListener('click', this.destroyPhoto.bind(this))
         overlayContainer.classList.add('container')
-        if(this.caption){
-            overlay.classList.add('overlay')
-            overlay.innerHTML = `${this.caption}`
-            overlay.appendChild(destroyBtnDiv)
-            overlayContainer.appendChild(overlay)
-        }
+        overlay.classList.add('overlay')
+        overlay.innerHTML = `${this.caption}`
+        overlay.appendChild(destroyBtnDiv)
+        overlayContainer.appendChild(overlay)
         const photoContainer = document.querySelector('#photoContainer')
         const photoRow = document.createElement('div');
         photoRow.classList.add('row')
@@ -37,5 +37,14 @@ class Photo {
         overlayContainer.appendChild(photoRow)
         photoContainer.insertBefore(overlayContainer, photoContainer.firstChild);
     }
-    
+    async destroyPhoto(e) {
+        let response = await apiService.destroyPhoto(this.id)
+        if(response.Status == 'Success'){
+            let photo = document.getElementById(e.target.id).closest('.container');
+            photo.remove()
+        }
+        else{
+            alert('Photo could not be deleted')
+        }
+    }
 }

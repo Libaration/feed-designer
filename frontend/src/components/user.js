@@ -30,6 +30,7 @@ class User {
     }
 
     async addPhoto(e) {
+        e.preventDefault();
         Animations.photoSubmitHide()
         let URL = e.target.firstChild.value
         let photo = await apiService.createPhoto(URL,this);

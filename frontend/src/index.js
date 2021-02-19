@@ -6,7 +6,8 @@ const init = () => {
 
 const bindEventListeners = () => {
     const sortable = new Draggable.Sortable(document.querySelectorAll('#photoContainer'), {
-        draggable: '.container'
+        draggable: '.container',
+        delay: 100
       });
     const userForm = document.querySelector('form.submit-user-form');
     const addPhotoButton = document.querySelector('.add-button');
@@ -26,7 +27,6 @@ const loadUser = async (e) => {
     user.displayUserInfo();
     Photo.clearPhotos();
     user.displayPhotos();
-    
     //Putting this here because I need access to the user variable declared above and I can't find a more efficient way to retrieve it at this moment.
     //Had to clone the submit form to prevent event listeners from stacking and POSTing multiple times to the backend.
     let addPhotoForm = document.querySelector('form.addpopupform')

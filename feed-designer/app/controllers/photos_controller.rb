@@ -4,7 +4,15 @@ class PhotosController < ApplicationController
       if @photo.save
         render json: @photo
       else
-        render json: '{failure}'
+        render json: {Status: "Failure"}
+      end
+    end
+    def destroy
+      @photo = Photo.find(params[:id])
+      if @photo.destroy
+        render json: {Status: "Success"}
+      else
+        render json: {Status: "Failure"}
       end
     end
 
