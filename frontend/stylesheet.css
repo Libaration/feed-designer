@@ -18,12 +18,12 @@ body {
     ". photoGrid photoGrid photoGrid ."
     ". photoGrid photoGrid photoGrid .";
 }
-#photoContainer img {
+#photoContainer .feedImg {
   display: block;
   height: 255px;
   width: 255px;
   object-fit: cover;
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 5px 5px 5px grey;
 }
 #bioContainer img {
   border-radius: 50%;
@@ -121,7 +121,7 @@ button:focus {
     ". . .";
   padding-bottom: 30px;
   margin-left: 248px;
-  padding-top: 5px;
+  padding-top: 100px;
 }
 
 .photoGrid {
@@ -191,4 +191,15 @@ button:focus {
   height: 125%;
   width: 100vw;
   opacity: 1;
+}
+.blurb {
+  text-align: right;
+}
+.destroyBtn input[type="image"] {
+  position: relative;
+  padding: 10px;
+  bottom: 20px;
+  height: 16px;
+  width: 16px;
+  right: 110px;
 }

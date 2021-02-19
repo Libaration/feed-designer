@@ -19,7 +19,6 @@ const bindEventListeners = () => {
 
 const loadUser = async (e) => {
     e.preventDefault();
-    const addPhotoForm = document.querySelector('form.addpopupform');
     const igHandle = document.getElementById('ig-handle');
     let user = await apiService.createOrFindUser(igHandle.value.replace('@',"").toLowerCase());
     const {id, username, image, name} = user;
@@ -27,16 +26,14 @@ const loadUser = async (e) => {
     user.displayUserInfo();
     Photo.clearPhotos();
     user.displayPhotos();
-
+    
     //Putting this here because I need access to the user variable declared above and I can't find a more efficient way to retrieve it at this moment.
-    addPhotoForm.addEventListener("submit", event => {
-        const imgURL = document.getElementById('addpopuptext')
-        user.addPhoto(imgURL.value)
-        Animations.photoSubmitHide()
-        event.preventDefault()
-    })
+    //Had to clone the submit form to prevent event listeners from stacking and POSTing multiple times to the backend.
+    let addPhotoForm = document.querySelector('form.addpopupform')
+    let clonedAddPhotoForm = addPhotoForm.cloneNode(true);
+    addPhotoForm.parentNode.replaceChild(clonedAddPhotoForm, addPhotoForm);
+    clonedAddPhotoForm.addEventListener("submit", user.addPhoto.bind(user))
     Animations.revealFeed(e);
 }
-
 
 init()

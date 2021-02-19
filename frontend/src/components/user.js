@@ -29,10 +29,12 @@ class User {
         }
     }
 
-    async addPhoto(URL) {
+    async addPhoto(e) {
+        Animations.photoSubmitHide()
+        let URL = e.target.firstChild.value
         let photo = await apiService.createPhoto(URL,this);
         let {id,caption,url} = photo
-        photo = new Photo(id,caption,url);
+        photo = new Photo(id,' ',url);
         photo.displayPhoto();
     }
 }
