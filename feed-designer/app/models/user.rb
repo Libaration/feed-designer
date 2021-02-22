@@ -1,7 +1,7 @@
 require "HTTParty"
 require "nokogiri"
 class User < ApplicationRecord
-    has_many :photos
+    has_many :photos, dependent: :destroy
     before_save :scrape_avatar, :scrape_name
 
     def scrape_avatar
