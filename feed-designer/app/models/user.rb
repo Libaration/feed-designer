@@ -11,15 +11,29 @@ class User < ApplicationRecord
         self.name = load_site.css("h2").text
     end
     def scrape_photos
-            images = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")
-            images.reverse.each do |img|
-                if Photo.exists?(['url LIKE ?', "#{img.attr('src')}"])
-                    next
-                end
-                    url = img.attr('src')
-                    caption = img.attr('alt')
-                    self.photos.create(caption: caption, url: url)
-                end
+        photosHash = {photos: []}
+        images = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")
+        images.each_with_index do |img, i|
+            url = img.attr('src')
+            caption = img.attr('alt')
+            photo = {
+                id: i,
+                url: url,
+                caption: caption
+            }
+            photosHash[:photos].push(photo)
+        end
+        photosHash
+    end
+
+    def create_user_photos
+        photos = scrape_photos[:photos].reverse
+        photos.each do |img|
+            if Photo.exists?(['url LIKE ?', img[:url]])
+                next
+            end
+            self.photos.create(caption: img[:caption], url: img[:url])
+        end
     end
 
     private

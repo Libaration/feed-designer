@@ -9,12 +9,15 @@ class UsersController < ApplicationController
     end
     def create
       user = User.find_or_initialize_by(userparams)
-      if user.save
-        user.scrape_photos
-        render json: user
-        else
-        render json: "{status: incomplete}"
-      end
+        if !User.exists?(user.id)
+          user.save
+          user.create_user_photos
+          redirect_to user_path(user)
+        elsif User.exists?(user.id)
+          redirect_to user_path(user)
+        else 
+          render json: {Status: "Failure", Reason: "Account could not be loaded"}
+        end
     end
 
     def userparams
