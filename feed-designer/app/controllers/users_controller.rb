@@ -14,6 +14,9 @@ class UsersController < ApplicationController
           user.create_user_photos
           redirect_to user_path(user)
         elsif User.exists?(user.id)
+          if user.has_new_posts?
+            user.create_user_photos
+          end
           redirect_to user_path(user)
         else 
           render json: {Status: "Failure", Reason: "Account could not be loaded"}

@@ -36,6 +36,16 @@ class User < ApplicationRecord
         end
     end
 
+    def has_new_posts?
+        updated_posts = scrape_photos[:photos].pluck(:url, :caption)
+        cached_posts = self.photos.all.reverse.pluck(:url, :caption)
+        difference_in_posts = cached_posts - updated_posts
+        difference_in_posts_minus_user_submitted = difference_in_posts.filter do |img|
+            img if !img.any?(nil)
+        end
+        !difference_in_posts_minus_user_submitted.empty? ? true : false
+    end
+
     private
     def load_site
         site = HTTParty.get("https://www.picuki.com/profile/#{self.username}")
