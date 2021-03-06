@@ -1,6 +1,8 @@
 # feed-designer
 Feed Designer scrapes an external website for Instagram information using Nokogiri and adds scraped photos/user info to Rails database.
 Rails backend serves database information as an API to the front end to display a organized instagram feed for user to plan their instagram posts.
+Photos can be drag/dropped and arranged to preview how a users feed will look before posting to instagram directly.
+This allows users/influencers to pre-plan their instagram feed for a more cohesive page design/theme.
 
 ![img](https://i.gyazo.com/7fed806995f913fa3d3e2ceaeb5fd1f6.mp4https://)
 
