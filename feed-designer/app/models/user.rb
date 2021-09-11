@@ -12,13 +12,14 @@ class User < ApplicationRecord
     end
     def scrape_photos
         photosHash = {photos: []}
+   
         images = load_site.xpath('//div[@class="content box-photos-wrapper"]').css("li").css("img")
         images.each_with_index do |img, i|
             url = img.attr('src')
             caption = img.attr('alt')
             photo = {
                 id: i,
-                url: url,
+                url: "https://www.picuki.com" + url,
                 caption: caption
             }
             photosHash[:photos].push(photo)
