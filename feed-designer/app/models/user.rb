@@ -5,7 +5,7 @@ class User < ApplicationRecord
     before_save :scrape_avatar, :scrape_name
 
     def scrape_avatar
-        self.image = load_site.css(".profile-avatar img").attr('src').text
+        self.image = "https://www.picuki.com" + load_site.css(".profile-avatar img").attr('src').text
     end
     def scrape_name
         self.name = load_site.css("h2").text
